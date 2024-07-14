@@ -32,9 +32,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const sequelize_1 = require("sequelize");
-const dotenv = __importStar(require("dotenv"));
 const sequelize_typescript_1 = require("sequelize-typescript");
+const dotenv = __importStar(require("dotenv"));
+const News_1 = require("../model/News");
 dotenv.config();
 class Database {
     constructor() {
@@ -47,10 +47,15 @@ class Database {
     }
     connectToPostgreSQL() {
         return __awaiter(this, void 0, void 0, function* () {
-            this.sequelize = new sequelize_1.Sequelize(this.POSTGRES_DB, this.POSTGRES_USER, this.POSTGRES_PASSWORD, {
+            this.sequelize = new sequelize_typescript_1.Sequelize(this.POSTGRES_DB, this.POSTGRES_USER, this.POSTGRES_PASSWORD, {
                 host: this.POSTGRES_HOST,
                 port: this.POSTGRES_PORT,
                 dialect: "postgres",
+                models: [News_1.News],
+                define: {
+                    createdAt: true,
+                    updatedAt: true,
+                }
             });
             this.sequelize
                 .authenticate()
@@ -60,29 +65,6 @@ class Database {
                 .catch((err) => {
                 console.log("❌ Unable to connect to PostgreSQL database", err);
             });
-            this.initModels();
-        });
-    }
-    initModels() {
-        let sequelize = this.sequelize;
-        sequelize.define("News", {
-            id: {
-                type: sequelize_typescript_1.DataType.INTEGER,
-                primaryKey: true,
-                autoIncrement: true,
-            },
-            title: {
-                type: sequelize_typescript_1.DataType.STRING(255),
-            },
-            description: {
-                type: sequelize_typescript_1.DataType.STRING(255),
-            },
-            link: {
-                type: sequelize_typescript_1.DataType.STRING(100),
-            },
-            time: {
-                type: sequelize_typescript_1.DataType.STRING(100),
-            },
         });
     }
 }

@@ -5,7 +5,7 @@ export const createNewsSchema = z.object({
         title: z
             .string()
             .min(1, {message: "Title must not be empty."}),
-            time: z
+        time: z
             .string()
             .min(1, {message: "Time must not be empty."}),
         description: z
@@ -23,7 +23,7 @@ export const updateNewsSchema = z.object({
         title: z
             .string()
             .min(1, {message: "Title must not be empty."}),
-            time: z
+        time: z
             .string()
             .min(1, {message: "Time must not be empty."}),
         description: z
