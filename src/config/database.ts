@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import * as dotenv from "dotenv";
+import { DataType } from "sequelize-typescript";
 dotenv.config(); 
 
 class Database {
@@ -37,6 +38,34 @@ class Database {
                     "❌ Unable to connect to PostgreSQL database", err
                 );
             })
+
+        this.initModels();
+    }
+
+    private initModels() {
+        let sequelize = this.sequelize as Sequelize;
+        sequelize.define("News",
+            {
+                id: {
+                    type: DataType.INTEGER,
+                    primaryKey: true,
+                    autoIncrement: true,
+                },
+                title: {
+                    type: DataType.STRING(255),
+                },
+                description: {
+                    type: DataType.STRING(255),
+                },
+                
+                link: {
+                    type: DataType.STRING(100),
+                },
+                time: {
+                    type: DataType.STRING(100),
+                },
+            },
+        );
     }
 }
 

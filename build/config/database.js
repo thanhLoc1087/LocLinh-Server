@@ -34,6 +34,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const dotenv = __importStar(require("dotenv"));
+const sequelize_typescript_1 = require("sequelize-typescript");
 dotenv.config();
 class Database {
     constructor() {
@@ -59,6 +60,29 @@ class Database {
                 .catch((err) => {
                 console.log("❌ Unable to connect to PostgreSQL database", err);
             });
+            this.initModels();
+        });
+    }
+    initModels() {
+        let sequelize = this.sequelize;
+        sequelize.define("News", {
+            id: {
+                type: sequelize_typescript_1.DataType.INTEGER,
+                primaryKey: true,
+                autoIncrement: true,
+            },
+            title: {
+                type: sequelize_typescript_1.DataType.STRING(255),
+            },
+            description: {
+                type: sequelize_typescript_1.DataType.STRING(255),
+            },
+            link: {
+                type: sequelize_typescript_1.DataType.STRING(100),
+            },
+            time: {
+                type: sequelize_typescript_1.DataType.STRING(100),
+            },
         });
     }
 }
