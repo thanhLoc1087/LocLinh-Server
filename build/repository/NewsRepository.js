@@ -87,9 +87,9 @@ class NewsRepository {
     }
     getAll() {
         return __awaiter(this, void 0, void 0, function* () {
+            const news = yield News_1.News.findAll();
+            return news;
             try {
-                const news = yield News_1.News.findAll();
-                return news;
             }
             catch (err) {
                 throw new Error("Failed to fetch news");

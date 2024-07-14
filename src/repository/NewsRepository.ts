@@ -76,9 +76,9 @@ export class NewsRepository implements INewsRepository {
     }
 
     async getAll(): Promise<News[]> {
+        const news = await News.findAll();
+        return news;
         try {
-            const news = await News.findAll();
-            return news;
         } catch (err) {
             throw new Error("Failed to fetch news");
         }

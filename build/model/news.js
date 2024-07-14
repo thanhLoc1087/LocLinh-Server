@@ -14,7 +14,7 @@ const sequelize_typescript_1 = require("sequelize-typescript");
 let News = class News extends sequelize_typescript_1.Model {
 };
 exports.News = News;
-News.NEWS_TABLE_NAME = "News";
+News.NEWS_TABLE_NAME = "TB_Van_bang_2";
 News.NEWS_ID = "id";
 News.NEWS_TITLE = "title";
 News.NEWS_TIME = "time";
@@ -22,17 +22,9 @@ News.NEWS_DESCRIPTION = "description";
 News.NEWS_LINK = "link";
 __decorate([
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        field: News.NEWS_ID
-    }),
-    __metadata("design:type", Number)
-], News.prototype, "id", void 0);
-__decorate([
-    (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING(255),
-        field: News.NEWS_TITLE
+        field: News.NEWS_TITLE,
+        primaryKey: true
     }),
     __metadata("design:type", String)
 ], News.prototype, "title", void 0);
@@ -59,6 +51,6 @@ __decorate([
 ], News.prototype, "link", void 0);
 exports.News = News = __decorate([
     (0, sequelize_typescript_1.Table)({
-        tableName: News.NEWS_TABLE_NAME
+        tableName: News.NEWS_TABLE_NAME,
     })
 ], News);

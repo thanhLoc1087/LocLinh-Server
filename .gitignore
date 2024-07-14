@@ -62,5 +62,6 @@ tests/baselines/reference/dt
 TEST-results.xml
 package-lock.json
 .eslintcache
+.env
 *v8.log
 /lib/

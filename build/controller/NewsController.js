@@ -72,12 +72,13 @@ class NewsController {
     }
     findAll(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            const news = yield new NewsRepository_1.NewsRepository().getAll();
+            console.log(news);
+            res.status(201).json({
+                status: "Fetched!",
+                message: "Successfully fetched all news!"
+            });
             try {
-                const news = yield new NewsRepository_1.NewsRepository().getAll();
-                res.status(201).json({
-                    status: "Fetched!",
-                    message: "Successfully fetched all news!"
-                });
             }
             catch (err) {
                 res.status(500).json({

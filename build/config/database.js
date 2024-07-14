@@ -53,9 +53,9 @@ class Database {
                 dialect: "postgres",
                 models: [News_1.News],
                 define: {
-                    createdAt: true,
-                    updatedAt: true,
-                }
+                    createdAt: false,
+                    updatedAt: false,
+                },
             });
             this.sequelize
                 .authenticate()
