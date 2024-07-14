@@ -99,3 +99,5 @@ class NewsController {
         }
     }
 }
+
+export default new NewsController()
