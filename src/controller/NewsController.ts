@@ -61,11 +61,7 @@ class NewsController {
 
     async findAll(req: Request, res: Response) {
         const news = await new NewsRepository().getAll();
-        console.log(news)
-        res.status(201).json({
-            status: "Fetched!",
-            message: "Successfully fetched all news!"
-        });
+        res.status(201).json(news);
         try {
         } catch(err) {
             res.status(500).json({
